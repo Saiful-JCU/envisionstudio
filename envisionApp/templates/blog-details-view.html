@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+
+{% block content %}
+
+<style>
+  /* ---- Reset-ish ---- */
+  :root{
+    --max-width: 1200px;
+    --accent: #0d6efd;
+    --muted:#666;
+    --bg:#f7f8fb;
+    --card-bg:#ffffff;
+    --gap:24px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    line-height:1.6;
+    color:#222;
+    background:var(--bg);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrapper{
+    max-width:var(--max-width);
+    margin:32px auto;
+    padding:0 20px;
+  }
+
+  .breadcrumbs{
+    font-size:14px;
+    color:var(--muted);
+    margin-bottom:12px;
+  }
+  .breadcrumbs a{ color:var(--muted); text-decoration:none }
+  .page-head{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-bottom:20px;
+  }
+  .page-head h1{
+    margin:0;
+    font-size:28px;
+    line-height:1.15;
+  }
+  .meta{
+    color:var(--muted);
+    font-size:14px;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns: 1fr 340px;
+    gap:var(--gap);
+    align-items:start;
+  }
+
+  /* Article card */
+  article.blgo-card{
+    background:var(--card-bg);
+    border-radius:10px;
+    padding:22px;
+    box-shadow:0 6px 18px rgba(12,15,30,0.06);
+    overflow:hidden;
+  }
+
+  .hero{
+    width:100%;
+    height:420px;
+    border-radius:8px;
+    overflow:hidden;
+    background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.15));
+    margin-bottom:18px;
+    position:relative;
+    display:block;
+  }
+  .hero img{
+    width:100%;
+    height:420px;
+    object-fit:cover;
+    background-size:cover;
+    display:block;
+  }
+
+  .content{
+    margin-top:6px;
+    color:#222;
+  }
+  /* style CKEditor content */
+  .content h2{ font-size:20px; margin-top:20px; }
+  .content p{ margin:14px 0; color:#333; font-size:16px; }
+  .content img{ max-width:100%; display:block; margin:12px auto; border-radius:6px; }
+  .content ul, .content ol{ padding-left:1.1rem; margin:12px 0 12px 0; }
+  .content blockquote{ border-left:4px solid #eee; margin:12px 0; padding:12px 16px; background:#fbfbfb; color:#444; }
+
+  /* Sidebar */
+  aside.sidebar{
+    position:relative;
+    top:0;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .card{
+    background:var(--card-bg);
+    padding:16px;
+    border-radius:10px;
+    box-shadow:0 6px 18px rgba(12,15,30,0.04);
+  }
+  .card h4{ margin:0 0 12px 0 }
+  .recent-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
+  .recent-list a{ display:flex; gap:10px; text-decoration:none; color:inherit; align-items:center; }
+  .recent-thumb{ width:56px; height:40px; object-fit:cover; border-radius:6px; flex:0 0 56px; }
+
+  .share-row{ display:flex; gap:10px; }
+  .share-row a{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:40px; height:40px; border-radius:8px; text-decoration:none; color:#fff;
+    font-weight:600;
+  }
+  .share-facebook{ background:#1877f2 }
+  .share-twitter { background:#1da1f2 }
+  .share-link { background:#111 }
+
+  /* Footer CTA */
+  .cta{
+    background:linear-gradient(90deg,#0d6efd,#6b8cff);
+    color:#fff; padding:18px; border-radius:10px; text-align:center;
+    display:flex; gap:12px; align-items:center; justify-content:center;
+  }
+  .cta a{ color:#fff; text-decoration:none; background:rgba(255,255,255,0.12); padding:8px 12px; border-radius:6px }
+
+  /* Responsive */
+  @media (max-width:1000px){
+    .grid{ grid-template-columns: 1fr 320px; }
+    .hero{ height:320px }
+  }
+  @media (max-width:800px){
+    .grid{ grid-template-columns: 1fr; }
+    .sidebar{ order:2 }
+    .page-head h1{ font-size:24px }
+    .hero{ height:260px }
+  }
+</style>
+
+<!-- JSON-LD structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ blgo.title|escapejs }}",
+  "description": "{{ blgo.description|striptags|truncatechars:250|escapejs }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ blgo.author|escapejs }}"
+  },
+  "datePublished": "{{ blgo.date|date:'Y-m-d' }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ request.build_absolute_uri }}"
+  }
+  {% if blgo.img %}, "image": "{{ request.build_absolute_uri|slice:":-1" }}{{ blgo.img.url }}" {% endif %}
+}
+</script>
+  <div class="wrapper">
+    <nav class="breadcrumbs">
+      <a href="{% url 'home' %}">Home</a> › <a href="{% url 'blog_cards' %}">Blog</a> › <span aria-current="page">{{ blgo.title }}</span>
+    </nav>
+
+    <header class="page-head" role="banner">
+      <h1>{{ blog.title }}</h1>
+      <div class="meta">By <strong>{{ blog.author }}</strong> • <time datetime="{{ blog.created_at|date:'Y-m-d' }}">{{ blog.created_at|date:"F j, Y" }}</time></div>
+    </header>
+
+    <div class="grid" role="main">
+      <article class="blgo-card" itemtype="https://schema.org/Article" itemscope>
+        <meta itemprop="headline" content="{{ blog.title }}">
+        <meta itemprop="author" content="{{ blog.author }}">
+        <meta itemprop="datePublished" content="{{ blgo.date|date:'Y-m-d' }}">
+
+        <div class="hero" role="img" aria-label="{{ blog.title }}">
+          {% if blog.banner %}
+            <img src="{{ blog.banner.url }}" alt="{{ blog.title }}" style="width:100%; height:100%;">
+          {% else %}
+            <img src="{% static 'images/placeholder-hero.jpg' %}" alt="{{ blog.title }}">
+          {% endif %}
+        </div>
+
+        <div class="content" itemprop="articleBody">
+          {{ blog.description|safe }}
+        </div>
+
+        <footer style="margin-top:20px; display:flex; justify-content:space-between; align-items:center;">
+          <div style="color:var(--muted); font-size:14px;">Tagged: <strong>{{ blog.tags|default:"General" }}</strong></div>
+          <div style="color:var(--muted); font-size:14px;">Reading time: <strong>{{ blog.description|striptags|truncatechars:100|length|add:"0" }} s</strong></div>
+        </footer>
+      </article>
+
+
+
+      
+      <aside class="sidebar" aria-label="Sidebar">
+        <div class="card">
+          <h4>Share</h4>
+          <div class="share-row">
+            {% comment %} build sharer links using current absolute url {% endcomment %}
+            <a class="share-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri|urlencode }}" target="_blank" rel="noopener">f</a>
+            <a class="share-twitter" href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri|urlencode }}&text={{ blog.title|urlencode }}" target="_blank" rel="noopener">t</a>
+            <a class="share-link" href="mailto:?subject={{ blog.title|urlencode }}&body={{ request.build_absolute_uri|urlencode }}" title="Email this article">✉</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h4>Recent blgos</h4>
+          <ul class="recent-list">
+            {% for r in all_blogs %}
+              <li>
+                <a href="">
+                  {% if r.img %}
+                    <img class="recent-thumb" src="{{ r.banner.url }}" alt="{{ r.title }}">
+                  {% else %}
+                    <img class="recent-thumb" src="{{ r.banner.url }}" alt="{{ r.title }}">
+                  {% endif %}
+                  <div>
+                    <div style="font-weight:600; font-size:14px;">{{ r.title|truncatechars:48 }}</div>
+                    <div style="color:var(--muted); font-size:12px;">{{ r.created_at|date:"M j, Y" }}</div>
+                  </div>
+                </a>
+              </li>
+            {% empty %}
+              <li>No recent blgos.</li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="card cta">
+          <div>
+            <strong>Want regular updates?</strong>
+            <div><a href="">Subscribe</a></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  {% endblock content %}

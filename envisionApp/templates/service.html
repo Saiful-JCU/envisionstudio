@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <!-- Services Section -->
+        <section id='service' class="services">
+            <h2 class="hervices_h2">Our Services</h2>
+            <div class="services-container">
+            
+            {% for s in service %}
+                <div class="service-box">
+                  <span>{{ s.ServiceCategory }}</span>
+                  {% if s.slug %}
+                
+                    <a href="{% url 'service_detail' s.slug %} " style='color:white;'><i class="fa-solid fa-arrow-right service_icon"></i></a>
+                  {% else %}
+
+                    <i class="fa-solid fa-arrow-right service_icon"></i>
+                  {% endif %}
+                </div>
+            {% endfor %}
+            
+
+            </div>
+            <div class="service-btn">
+            <a href="#" class="btn all-services">All Services <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </section>
+
+    
+        {% comment %} <!------------------------------ our service section end ---------------> {% endcomment %}
+    
+{% endblock content %}
+        <!-- Services Section -->
+        <section id='service' class="services">
+            <h2 class="hervices_h2">Our Services</h2>
+            <div class="services-container">
+            
+            {% for s in service %}
+                <div class="service-box">
+                  <span>{{ s.ServiceCategory }}</span>
+                  {% if s.slug %}
+                
+                    <a href="{% url 'service_detail' s.slug %} " style='color:white;'><i class="fa-solid fa-arrow-right service_icon"></i></a>
+                  {% else %}
+
+                    <i class="fa-solid fa-arrow-right service_icon"></i>
+                  {% endif %}
+                </div>
+            {% endfor %}
+            
+
+            </div>
+            <div class="service-btn">
+            <a href="#" class="btn all-services">All Services <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </section>
+
+    
+        {% comment %} <!------------------------------ our service section end ---------------> {% endcomment %}
+    

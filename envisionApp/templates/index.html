@@ -1,0 +1,556 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+        {% comment %} <!----------------------------------------------------- hero new code ---------------------------------------> {% endcomment %}
+        <section class="hero">
+            <div class="overlay"></div>
+            <div class="hero-content">
+              <h5>Editing Your</h5>
+              <h1><span>Image Editing</span> Best Services</h1>
+              <p class="text-white">From clipping paths to background removal, envisionStdio delivers high-quality edits to make your visuals shine.</p>
+              <a href="#" class="hero-btn">Learn More</a>
+            </div>
+          </section>
+
+
+
+          {% comment %} ---------------------- features cards section --------------------- {% endcomment %}
+       
+          <section class="features" aria-labelledby="features-heading">
+            <header class="sr-only">
+            <h2 id="features-heading">Why Choose Envision Studio for Graphic Design Services</h2>
+            </header>
+        
+            <div class="feature-card feature-card-1">
+            <i class="fa-solid fa-crop-simple" aria-hidden="true"></i>
+            <h3>Quality Service</h3>
+            <p>We deliver precise clipping paths, flawless background removal, and premium photo editing services tailored to your business and brand identity.</p>
+            </div>
+        
+            <div class="feature-card">
+            <i class="fa-solid fa-user-tie" aria-hidden="true"></i>
+            <h3>Expert People</h3>
+            <p>Our team of professional image editors ensures consistency, accuracy, and the highest level of quality in every project we complete.</p>
+            </div>
+        
+            <div class="feature-card feature-card-1">
+            <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+            <h3>Professional Photo Retouching</h3>
+            <p>From shadow creation to advanced retouching, our expert editors use cutting-edge tools to enhance your photos and make them stand out.</p>
+            </div>
+        </section>
+
+
+          {% comment %} <!-- Our Introduction Section --> {% endcomment %}
+    <section class="introduction">
+        <div class="intro-container">
+        <div>
+            <div class="section">
+            <span class="tag">Our Introduction</span>
+            <h2 class="section-title">
+                Professional Graphic Design & Photo Editing – Making Your Images Perfect
+            </h2>
+            </div>
+    
+            <!-- Left Content -->
+            <div class="intro-text">
+            <div class="intro-highlight">
+                <p>
+                Our local team is available 24/7 to provide expert graphic design and photo editing services, delivering top-quality results quickly.
+                </p>
+            </div>
+            <p class="intro-desc">
+                From clipping paths and background removal to advanced photo retouching, we ensure your images are perfect for eCommerce, marketing, or personal projects.
+            </p>
+            <ul class="intro-list">
+                <li>✅ Experienced Graphic Designers & Photo Editors</li>
+                <li>✅ Consistent Quality with Dedicated Staff</li>
+                <li>✅ Easy Online Booking, Management & Payment</li>
+            </ul>
+            <div class="intro-buttons">
+                <a href="#services" class="btn-primary" aria-label="Learn more about Envision Studio graphic design services">
+                Learn more
+                </a>
+                <a href="tel:(+880) 174 837 9910" class="btn-secondary" aria-label="Call Envision Studio for emergency photo editing service">
+                📞 Emergency Call <span>(+880) 174 837 9910</span>
+                </a>
+            </div>
+            </div>
+        </div>
+    
+        <!-- Right Content -->
+        <div >
+          {% for additionlimage in additionlimage %}
+            <img class="intro-img" src="{{ additionlimage.intro_overlay_image.url }}" alt="Professional photo editing example by Envision Studio"  loading="lazy" />
+          {% endfor %}
+        </div>
+
+          {% comment %} <div class="intro-images">
+            <div class="img-wrapper main-img">
+                <img src="{{additionlimage.intro_image.url}}" alt="Professional photo editing example by Envision Studio"                   loading="lazy" />
+                <div class="experience-badge" aria-hidden="true">20 <br> Years Experience</div>
+            </div>
+              <div class="img-wrapper overlay-img"  role="img" aria-label="Decorative image overlay">
+                <img src="{{additionlimage.intro_overlay_image.url}}"  alt="Creative photo editing overlay example"      loading="lazy" />
+              </div>
+          </div> {% endcomment %}
+
+        </div>
+    </section>
+
+    <!-- Services Section -->
+        <section id='service' class="services">
+            <h2 class="hervices_h2">Our Services</h2>
+            <div class="services-container">
+            
+            {% for s in service %}
+                <div class="service-box">
+                  <span>{{ s.ServiceCategory }}</span>
+                  {% if s.slug %}
+                
+                    <a href="{% url 'service_detail' s.slug %} " style='color:white;'><i class="fa-solid fa-arrow-right service_icon"></i></a>
+                  {% else %}
+
+                    <i class="fa-solid fa-arrow-right service_icon"></i>
+                  {% endif %}
+                </div>
+            {% endfor %}
+            
+
+            </div>
+            <div class="service-btn">
+            <a href="#" class="btn all-services">All Services <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </section>
+
+    
+        {% comment %} <!------------------------------ our service section end ---------------> {% endcomment %}
+    
+        <!-- Work Process Section -->
+        <section class="section work-process" aria-labelledby="work-process-heading">
+            <h5 class="tag" >Our Working Process</h5>
+            <h2 id="work-process-heading">How Our Graphic Design Services Work</h2>
+            <p>We follow a simple, transparent, and effective process to deliver professional clipping path, background removal, photo retouching, and image editing services that meet your business needs.</p>
+            
+            <div class="process-cards">
+            <!-- Step 1 -->
+            <div class="process-card">
+                <div class="process-img">
+                <img src="{% static 'images/upload images.jfif' %}" alt="Step 1 - Upload your images for editing">
+                <div class="icon" aria-hidden="true"><i class="fa-solid fa-user"></i></div>
+                </div>
+                <h3>Step 1: Send Your Images</h3>
+                <p>Upload your photos securely and let our expert editors know the exact editing requirements, such as clipping paths, background removal, or retouching.</p>
+            </div>
+        
+            <!-- Step 2 -->
+            <div class="process-card">
+                <div class="process-img">
+                <img src="{% static 'images/edit-professionally.jpg' %}" alt="Step 2 - Professional editing process">
+                <div class="icon" aria-hidden="true"><i class="fa-solid fa-broom"></i></div>
+                </div>
+                <h3>Step 2: We Edit Professionally</h3>
+                <p>Our skilled graphic designers process your images using advanced tools to ensure precision, high quality, and consistent results for every project.</p>
+            </div>
+        
+            <!-- Step 3 -->
+            <div class="process-card">
+                <div class="process-img">
+                <img src="{% static 'images/final-result.jfif' %}" alt="Step 3 - Deliver high-quality images">
+                <div class="icon" aria-hidden="true"><i class="fa-solid fa-sparkles"></i></div>
+                </div>
+                <h3>Step 3: Get Final Results</h3>
+                <p>Receive your professionally edited images on time, ready for use in eCommerce stores, marketing campaigns, or brand promotions.</p>
+            </div>
+            </div>
+        </section>
+        
+          <!---------------------------------- Recent works section ------------------------>
+        <section class="section  recent-work-container" aria-labelledby="recent-works-heading">
+            <!-- <header class="section-header"> -->
+            <h4 class="">Recent Works</h4>
+            <h2 id="recent-works-heading">Our Recent Graphic Design Works</h2>
+            <p>Explore before-and-after samples of our clipping path, background removal, photo retouching, and image enhancement projects.</p>
+            <div class="wraper">
+                <div class="wrap">
+          
+                    <div class="grid">                 
+                         <!-- Card 2 -->
+                      {% for i in ba_img %}
+                          <div class="card">
+                              <div class="img-compare" style="--pos:50%;">
+                              <img class="sr-only" src="{{ i.before_img.url}}" alt="Rocks and sunset" />
+                              <img class="base-img" src="{{ i.before_img.url }}" alt="">
+                              <div class="overlay-wrapper" aria-hidden="true">
+                                  <img class="overlay-img" src="{{ i.after_img.url }}" alt="">
+                              </div>
+                              <div class="divider" aria-hidden="true"></div>
+                              <button class="handle" aria-label="Slide to compare" title="Drag or use ← → keys">
+                                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                  <path d="M8 7l-4 5 4 5" stroke="#666" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                  <path d="M16 7l4 5-4 5" stroke="#666" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                  </svg>
+                              </button>
+                              </div>
+                          </div>
+                      {% endfor %}
+                    </div>         
+                </div>
+            </div>
+        </section>
+        
+    <!---------------------------------- Recent works section end------------------------>
+    
+          
+    <!---------------------------------- pricing section ------------------------>
+        {% comment %} <section class="pricing-section">
+            <!-- Projects Tag -->
+            <div class="pricing-wrap">Pricing</div>
+            <h2>Affordable & Professional Image Editing Packages</h2>
+            <p>Choose from our tailored clipping path, background removal, and photo retouching packages designed for photographers, eCommerce stores, and agencies. Get consistent, high-quality edits at the best rates.</p>
+        
+            <div class="pricing-container">
+        
+            <!-- Basic Plan -->
+            <div class="pricing-card">
+                <div class="card-header">
+                <h3>BASIC PLAN</h3>
+                <div class="price">$29<span>/mo</span></div>
+                </div>
+                <div class="card-body">
+                <p>Perfect for small projects or individuals needing simple photo edits.</p>
+                <ul>
+                    <li>Up to 50 Images / Month</li>
+                    <li>Basic Clipping Path</li>
+                    <li>Background Remove</li>
+                    <li>Natural Shadow & Dust Removal</li>
+                </ul>
+                </div>
+                <div class="card-footer">
+                <a href="#">Get Started →</a>
+                </div>
+            </div>
+        
+            <!-- Standard Plan -->
+            <div class="pricing-card">
+                <div class="card-header">
+                <h3>STANDARD PLAN</h3>
+                <div class="price">$49<span>/mo</span></div>
+                </div>
+                <div class="card-body">
+                <p>Ideal for eCommerce sellers and photographers who need regular, high-quality image edits.</p>
+                <ul>
+                    <li>Up to 200 Images / Month</li>
+                    <li>Advanced Clipping Path & Multi-Path</li>
+                    <li>Hair Masking & Color Correction</li>
+                    <li>Drop Shadow & Reflection</li>
+                </ul>
+                </div>
+                <div class="card-footer">
+                <a href="#">Get Started →</a>
+                </div>
+            </div>
+        
+            <!-- Premium Plan -->
+            <div class="pricing-card">
+                <div class="card-header">
+                <h3>PREMIUM PLAN</h3>
+                <div class="price">$79<span>/mo</span></div>
+                </div>
+                <div class="card-body">
+                <p>Best for studios and agencies seeking bulk editing with top-tier quality and fast delivery.</p>
+                <ul>
+                    <li>Up to 500 Images / Month</li>
+                    <li>High-End Photo Retouching</li>
+                    <li>Jewelry & Product Retouching</li>
+                    <li>Photo Restoration & Raster to Vector</li>
+                </ul>
+                </div>
+                <div class="card-footer">
+                <a href="#">Get Started →</a>
+                </div>
+            </div>
+        
+            </div>
+        </section> {% endcomment %}
+    <!---------------------------------- pricing section end------------------------>
+ 
+    
+    <!---------------------------------- company performance section end------------------------>
+    <section class="stats-section" aria-labelledby="stats-heading">
+        <div class="stats-container">
+      
+          <header class="sr-only">
+            <h2 id="stats-heading">Company Performance Statistics</h2>
+            <p>Key achievements from our graphic design and photo editing services.</p>
+          </header>
+      
+          <!-- Item 1 -->
+          <div class="stat-item" role="group" aria-label="Happy Customers">
+            <div class="stat-icon" aria-hidden="true"><i class="fas fa-gift"></i></div>
+            <div class="stat-number" data-target="301" aria-label="301 Happy Customers">301</div>
+            <p class="stat-label">Happy Customers</p>
+          </div>
+      
+          <!-- Item 2 -->
+          <div class="stat-item" role="group" aria-label="Service Guarantee">
+            <div class="stat-icon" aria-hidden="true"><i class="fas fa-award"></i></div>
+            <div class="stat-number" data-target="100" aria-label="100 Percent Service Guarantee">100%</div>
+            <p class="stat-label">Service Guarantee</p>
+          </div>
+      
+          <!-- Item 3 -->
+          <div class="stat-item" role="group" aria-label="Professional Designers">
+            <div class="stat-icon" aria-hidden="true"><i class="fa fa-users"></i></div>
+            <div class="stat-number" data-target="124" aria-label="124 Professional Designers">124</div>
+            <p class="stat-label">Professional Designers</p>
+          </div>
+      
+          <!-- Item 4 -->
+          <div class="stat-item" role="group" aria-label="Expert Editors">
+            <div class="stat-icon" aria-hidden="true"><i class="fa fa-briefcase"></i></div>
+            <div class="stat-number" data-target="254" aria-label="254 Expert Editors">254</div>
+            <p class="stat-label">Expert Editors</p>
+          </div>
+      
+        </div>
+      </section>
+    <!---------------------------------- company performance section end------------------------>
+    
+    
+    <!---------------------------------- testimonials section ------------------------>
+    <section class="testimonials" aria-labelledby="testimonials-heading">
+        <div class="section container">
+          
+            <span class="tag">Testimonials</span>
+            <h2 id="testimonials-heading">What Our Clients Say About Our Graphic Design Services</h2>
+            <p>Real feedback from satisfied clients who used Envision Studio for professional photo editing, clipping path, and retouching services.</p>
+
+      
+          <div class="testimonials-grid" role="list">
+      
+            <!-- Review Card 1 -->
+            <div class="testimonial-card" role="listitem" itemscope itemtype="https://schema.org/Review">
+              <div class="client-img">
+                <img src="//i.ibb.co/6zvjpmt/bg.jpg" alt="Portrait of John Doe, Business Owner" itemprop="image">
+              </div>
+              <blockquote class="review-text" itemprop="reviewBody">
+                "Envision Studio has been a game-changer for our business. Their photo editing and graphic design quality is top-notch and always delivered on time."
+              </blockquote>
+              <h4 class="client-name" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                <span itemprop="name">John Doe</span>
+              </h4>
+              <span class="client-role">Business Owner</span>
+              <meta itemprop="reviewRating" content="5">
+              <meta itemprop="itemReviewed" content="Graphic Design Services">
+            </div>
+      
+            <!-- Review Card 2 -->
+            <div class="testimonial-card" role="listitem" itemscope itemtype="https://schema.org/Review">
+              <div class="client-img">
+                <img src="//i.ibb.co/6zvjpmt/bg.jpg" alt="Portrait of Sarah Lee, eCommerce Seller" itemprop="image">
+              </div>
+              <blockquote class="review-text" itemprop="reviewBody">
+                "The clipping path and background removal services are exceptional. Highly recommended for eCommerce brands that need professional product photos."
+              </blockquote>
+              <h4 class="client-name" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                <span itemprop="name">Sarah Lee</span>
+              </h4>
+              <span class="client-role">eCommerce Seller</span>
+              <meta itemprop="reviewRating" content="5">
+              <meta itemprop="itemReviewed" content="Photo Editing Services">
+            </div>
+      
+          </div>
+        </div>
+      </section>
+    <!---------------------------------- testimonials section end------------------------>
+ 
+ 
+    <!---------------------------------- staff section ------------------------>
+    <section class="staff-section" aria-labelledby="staff-heading">
+        <div class="section-header">
+          <span class="section-tag">Our Creative Team</span>
+          <h2 id="staff-heading">Meet Our Expert Graphic Designers & Photo Editors</h2>
+          <p>Our professional design team ensures precision, creativity, and quality in every project — from clipping paths to advanced photo retouching.</p>
+        </div>
+        
+        <div class="staff-cards" role="list">
+      
+          <!-- Staff 1 -->
+          {% for staff in staff %} 
+            <div class="staff-card" role="listitem">
+              <div class="staff-img">
+                <img src="{{ staff.image.url}}" alt="{{ staff.image_alt_text }}">
+                <div class="social-icons" aria-label="{{ staff.name }} social links">
+                  <a href="{{ staff.fb_link }}" aria-label="{{ staff.name }} on Facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="{{ staff.twitter_link }}" aria-label="{{ staff.name }} on Twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="{{ staff.linkedin_link }}" aria-label="{{ staff.name }} on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="{{ staff.instagram_link }}" aria-label="{{ staff.name }} on Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+              </div>
+              <div class="staff-info">
+                <h3>{{ staff.name }}</h3>
+                <span>{{ staff.department }}</span>
+              </div>
+            </div>
+          {% endfor %}
+          
+      
+        </div>
+      </section>
+    <!---------------------------------- sataff section end------------------------>
+ 
+    <!---------------------------------- blog section ------------------------>
+    <section class="section blog-section" aria-labelledby="blog-section-title">
+
+        <span class="section-tag">Our Blog</span>
+        <h2 id="blog-section-title" class="blog-section-title">Graphic Design & Photo Editing Insights</h2>
+        <p class="">
+          Explore the latest tips, tutorials, and industry updates on graphic design, clipping paths, background removal, and professional photo editing.
+        </p>
+    
+      <div class="blog-cards">
+        {% for blog in blog %}
+        <!-- Blog Card 1 -->
+            <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting" >
+              <div class="blog-image">
+                <img src="{{ blog.banner.url}}" 
+                    alt="Five Professional Tips for Better Photo Editing and Retouching"
+                    loading="lazy" width="400" height="250" itemprop="image">     <div class="overlay" aria-hidden="true">
+                  <a href="{% url 'blogDetailsView' blog.slug %}"><i class="fas fa-link"></i></a>
+                </div>
+              </div>
+              <div class="blog-content">
+                <p class="blog-meta">
+                  <time datetime="2019-04-19" itemprop="datePublished">{{ blog.created_at }}</time> | 
+                  <span itemprop="author">{{ blog.author }}</span>
+                </p>
+                <h3 class="blog-title" itemprop="headline">{{ blog.title}}</h3>
+                {% if blog.slug %} 
+                  <a href="{% url 'blogDetailsView' blog.slug %}" class="read-more" itemprop="url">Read More →</a>            
+                {% endif %}  
+              </div>
+            </article>
+        {% endfor %}
+    
+    
+      </div>
+    </section>
+    <!---------------------------------- blog section end------------------------>
+ 
+ 
+    <!---------------------------------- free trial section end------------------------>
+    
+    {% comment %} <section id="free_trial" class="section" style="margin-top: 50px; margin-bottom: 60px;">
+        <h2 class="free-trial-h2">Get Your Free Trial in 45 Minutes</h2>
+    
+      
+        <div class="container free-trial-container">
+          <div class="service-selction-form">
+      
+            <form method="POST" action="{% url 'getjobdata' %}" enctype="multipart/form-data" aria-label="Free trial form for graphic design and photo editing services">
+              {% csrf_token %}
+      
+              <div class="mb-4">
+                <label for="exampleInputEmail1" class="form-label visually-hidden">Email address</label>
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Your Email" aria-required="true">
+                <div id="emailHelp" class="form-text visually-hidden">We'll never share your email with anyone else.</div>
+              </div>
+      
+              <select name="service" class="form-select mb-4" aria-label="Select service type">
+                <option selected disabled>Service Type</option>
+                <option value="Clipping Path">Clipping Path</option>
+                <option value="Background Remove">Background Remove</option>
+                <option value="Retouch">Retouch</option>
+                <option value="Color Correction">Color Correction</option>
+                <option value="Hair Masking">Hair Masking</option>
+                <option value="Photo Liquify">Photo Liquify</option>
+                <option value="Multi Path">Multi Path</option>
+                <option value="Neck Joint">Neck Joint</option>
+                <option value="Natural Shadow">Natural Shadow</option>
+                <option value="Image Symmetrical">Image Symmetrical</option>
+                <option value="Drop Shadow">Drop Shadow</option>
+                <option value="Reflection">Reflection</option>
+                <option value="Dust Remove">Dust Remove</option>
+                <option value="Banner Design">Banner Design</option>
+                <option value="Card Design">Card Design</option>
+                <option value="Photo Restoration">Photo Restoration</option>
+                <option value="Logo Design">Logo Design</option>
+              </select>
+      
+              <select name="fileFormat" class="form-select mb-4" aria-label="Expected file format">
+                <option selected disabled>Expected File Format</option>
+                <option value="JPEG">.JPEG</option>
+                <option value="JPG">.JPG</option>
+                <option value="GIF">.GIF</option>
+                <option value="PNG">.PNG</option>
+                <option value="TIF">.TIF</option>
+                <option value="AI">.AI</option>
+                <option value="PDF">.PDF</option>
+                <option value="ZIP">.ZIP</option>
+                <option value="RAR">.RAR</option>
+              </select>
+      
+              <select name="background" class="form-select mb-4" aria-label="Expected background type">
+                <option selected disabled>Expected Background</option>
+                <option value="Transparent">Transparent</option>
+                <option value="White">White</option>
+                <option value="Black">Black</option>
+                <option value="Gray">Gray</option>
+                <option value="Colored">Solid Color</option>
+                <option value="Gradient">Gradient</option>
+                <option value="Pattern">Pattern</option>
+                <option value="Texture">Texture</option>
+                <option value="Blurred">Blurred</option>
+                <option value="Shadowed">Shadowed</option>
+                <option value="Custom">Custom Image</option>
+              </select>
+      
+              <input type="text" name="message" class="form-control mb-4" placeholder="Write your message" aria-label="Additional details for your free trial">
+      
+              <div class="input-group mb-4">
+                <label class="input-group-text" for="inputGroupFile01">Upload Image</label>
+                <input type="file" name="file" class="form-control" id="inputGroupFile01" aria-describedby="fileHelp">
+              </div>
+      
+              <div class="mb-4 form-check">
+                <input type="checkbox" name="check" class="form-check-input" id="exampleCheck1" required>
+                <label class="form-check-label" for="exampleCheck1">I agree to the terms and conditions</label>
+              </div>
+      
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+      
+          </div>
+      
+          <div class="free-trial-text" style="width: 500px; padding: 20px; margin-bottom: 30px;">
+            <p class="trial-text">
+              <strong style="font-size: 24px;">It Just Takes Simple Steps</strong><br>
+              Upload a few images for an accurate quote and share the style you are looking for.<br>
+              <span>No credit card is required.</span><br>
+              Fill out this form, and we’ll get back to you in 45 minutes or less with your customized quote.<br>
+              <em>[<b>Supported file types:</b> JPEG, JPG, GIF, PNG, TIF, AI, PDF, ZIP, RAR | Maximum file size: 25 MB]</em>
+              <br>
+              If your file is larger than 25 MB, you can share it via Dropbox or WeTransfer to this email: <br>
+              <strong>envisionstdio@gmail.com</strong>
+            </p>
+            <img src="//i.ibb.co/6zvjpmt/bg.jpg" alt="File sharing platforms logo" style="display: none; width: 430px; height: 150px; ">
+          </div>
+      
+        </div>
+    </section> {% endcomment %}
+
+    
+    
+      <!---------------------------------- free trial section ------------------------>
+
+
+
+    
+
+{% endblock %}
+
