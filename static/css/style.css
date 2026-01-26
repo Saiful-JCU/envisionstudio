@@ -115,16 +115,60 @@ justify-content: flex-start;
 
 /* ---------------------------------------------- hero new code -------------------------------------------------- */
 
-.hero {
+/* .hero {
     position: relative;
-    height: 90vh;
-    background: url("https://i.ibb.co/6zvjpmt/bg.jpg") no-repeat center center/cover;
+    min-height: 90vh;   
+    
     display: flex;
     align-items: center;
     padding: 0 10%;
     color: #fff;
     z-index: 1;
+  } */
+
+  .hero {
+    background: url('https://envisionstudio.cloud/media/intro_image/behind-the-scenes-our-experts-working-office-graphic-design-team-creativity_C1Fo32F.webp')
+    no-repeat center / cover;
+  overflow: hidden;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    color: #fff;
+    z-index: 1;
+
   }
+  
+
+   /* .hero {
+    position: relative;
+    min-height: 100vh;
+
+    background: url('https://envisionstudio.cloud/media/intro_image/behind-the-scenes-our-experts-working-office-graphic-design-team-creativity_C1Fo32F.webp')
+                no-repeat center / cover;
+    overflow: hidden;
+  }
+  
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    backdrop-filter: blur(1px); 
+    background: rgba(0, 0, 0, 0.15); 
+    z-index: 1;
+  }
+  
+  .hero > * {
+    position: relative;
+    z-index: 2;
+  }
+ */
+
+
   
   .hero .overlay {
     position: absolute;
@@ -140,15 +184,22 @@ justify-content: flex-start;
   }
   
   .hero-content h5 {
+    max-width: 200px;
     font-size: 18px;
     color: #ffb400;
     margin-bottom: 12px;
+    backdrop-filter: blur(1px); 
+    background: rgba(0, 0, 0, 0.15); 
   }
   
   .hero-content h1 {
     font-size: 52px;
     line-height: 1.2;
     margin-bottom: 15px;
+    color: #ffb400;
+    backdrop-filter: blur(1px); 
+    background: rgba(0, 0, 0, 0.15); 
+
   }
   
   .hero-content h1 span {
@@ -158,6 +209,8 @@ justify-content: flex-start;
   .hero-content p {
     font-size: 17px;
     margin-bottom: 25px;
+    backdrop-filter: blur(1px); 
+    background: rgba(0, 0, 0, 0.15); 
   }
   
   .hero-btn {
@@ -625,7 +678,7 @@ justify-content: flex-start;
   /* ---------------------------------- recent works card section ------------------- */
   
 .recent-work-container{
-    background-color: #0b3d46;
+    /* background-color: #0b3d46; */
     padding: 20px 10px;
     color: whitesmoke;
     text-align: justify;
@@ -641,7 +694,8 @@ justify-content: flex-start;
   .recent-work-container h2{
     text-align: center;
     font-size: 24px;
-    font-weight: bolder
+    font-weight: bolder;
+    color: #0b3d46;
   }
   /*--------------------------------------------- new code  -------------*/
   
@@ -820,174 +874,7 @@ justify-content: flex-start;
   
   
   /*------------------------------------------------- recent work section end --------------------------------------------------- */
-  /*------------------------------------------------- pricing section  --------------------------------------------------- */
-    
-    /* Pricing Container */
-
- /* Section Container */
- .pricing-section {
-    text-align: center;
-    padding: 60px 20px;
-  }
   
-  /* Small "Projects" tag with lines */
-  .pricing-section .pricing-wrap {
-    font-size: 14px;
-    font-weight: 600;
-    color: #0b3d46;
-    position: relative;
-    display: inline-block;
-    margin-bottom: 10px;
-  }
-  
-  .pricing-section .pricing-wrap::before,
-  .pricing-section .pricing-wrap::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 40px;
-    height: 2px;
-    background: #0b3d46;
-  }
-  
-  .pricing-section .pricing-wrap::before {
-    right: 100%;
-    margin-right: 10px;
-  }
-  
-  .pricing-section .pricing-wrap::after {
-    left: 100%;
-    margin-left: 10px;
-  }
-  
-  .pricing-section h2 {
-    font-size: 28px;
-    font-weight: 700;
-    color: #1a2e35;
-    margin-bottom: 10px;
-  }
-  
-  .pricing-section p {
-    max-width: 600px;
-    margin: 0 auto 50px;
-    color: #6f6f6f;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-  
-  /* Pricing Container */
-  .pricing-container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-  }
-  
-  /* Card */
-  .pricing-card {
-    background: #fff;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    border-radius: 6px;
-    overflow: hidden;
-    width: 280px;
-    transition: transform 0.3s ease;
-  }
-  
-  .pricing-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  /* Card Header with curved bottom */
-  .pricing-card .card-header {
-    background: #0b3d46;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    position: relative;
-    
-    border-bottom-left-radius: 50% 20px;
-    border-bottom-right-radius: 50% 20px;
-  }
-  
-  .pricing-card .card-header::after {
-    content: "";
-    position: absolute;
-    bottom: -20px;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    border-bottom-left-radius: 50% 20px;
-    border-bottom-right-radius: 50% 20px;
-    background: #0b3d46;
-    /* transition: 3s; */
-    z-index: -1;
-  }
-  
-  .pricing-card .card-header h3 {
-    font-size: 12px;
-    font-weight: 600;
-    background: #f8c300;
-    color: #0b3d46;
-    display: inline-block;
-    padding: 8px 14px;
-    border-radius: 3px;
-    margin-bottom: 15px;
-  }
-  
-  .pricing-card .price {
-    font-size: 32px;
-    font-weight: 700;
-  }
-  
-  .pricing-card .price span {
-    font-size: 14px;
-    font-weight: 400;
-  }
-  
-  /* Card Body */
-  .pricing-card .card-body {
-    padding: 25px 20px;
-    font-size: 14px;
-    color: #444;
-  }
-  
-  .pricing-card .card-body p {
-    margin-bottom: 15px;
-  }
-  
-  .pricing-card .card-body ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .pricing-card .card-body ul li {
-    margin: 10px 0;
-  }
-  
-  /* Card Footer */
-  .pricing-card .card-footer {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .pricing-card .card-footer a {
-    background: #0b3d46;
-    color: #fff;
-    padding: 10px 20px;
-    font-size: 14px;
-    text-decoration: none;
-    border-radius: 4px;
-    display: inline-block;
-    transition: background 0.3s;
-  }
-  
-  .pricing-card .card-footer a:hover {
-    background: #092e34;
-  }
-  
-  
-  /*------------------------------------------------- pricing  section end --------------------------------------------------- */
   /*------------------------------------------------- company performance  section --------------------------------------------------- */
   .stats-section {
     position: relative;
@@ -1076,13 +963,29 @@ justify-content: flex-start;
   /* Testimonials Section */
 .testimonials {
     padding: 80px 10%;
-    background: #0a2f43;
+    /* background: #0a2f43; */
     color: #fff;
     font-family: 'Poppins', sans-serif;
     text-align: center;
   }
+
   
-  .section-header.light .sub-title {
+
+  .testimonials .tag{
+    color: #ffb400;
+
+
+  }
+  .testimonials h2{
+    color: #0b3d46;
+
+  }
+  .testimonials .section p{
+    color: #000;
+
+  }
+  
+  /* .section-header.light .sub-title {
     color: #ffb400;
     font-weight: 600;
     text-transform: uppercase;
@@ -1094,6 +997,7 @@ justify-content: flex-start;
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 15px;
+    
   }
   
   .section-header.light p {
@@ -1102,7 +1006,7 @@ justify-content: flex-start;
     line-height: 1.6;
     max-width: 600px;
     margin: 0 auto 50px auto;
-  }
+  } */
   
   /* Grid */
   .testimonials-grid {
@@ -1533,7 +1437,7 @@ justify-content: flex-start;
     width: 100%;
     height: 100px;
     color: white;
-    background-color: #0b3d46;
+    background-color: #0f0f0f;
     text-align: center;
     font-size: 18px;
     padding: 40px;

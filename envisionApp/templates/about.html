@@ -7,24 +7,18 @@
   {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    "headline": "About EnvisionStudio — Creative Design Agency",
+    "headline": "About Envision Studio Bangladesh — Creative Design Agency",
     "description": "Learn about EnvisionStudio’s creative philosophy, services, and team of talented designers.",
     "publisher": {
       "@type": "Organization",
-      "name": "EnvisionStudio",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://envisionstudio.com/static/images/logo.png"
-      }
+      "name": "Envision Studio Bangladesh",
     },
     "mainEntity": {
       "@type": "Organization",
-      "name": "EnvisionStudio",
-      "url": "https://envisionstudio.com",
+      "name": "Envision Studio Bangladesh",
+      "url": "https://envisionstudio.cloud",
       "sameAs": [
-        "https://facebook.com/envisionstudio",
-        "https://instagram.com/envisionstudio",
-        "https://linkedin.com/company/envisionstudio"
+        {% comment %} "https://linkedin.com/company/envisionstudio" {% endcomment %}
       ]
     }
   }
@@ -32,12 +26,12 @@
 
 
   <!-- ABOUT HERO SECTION -->
-  <section  style="background-image: url('{% static 'images/laptop-bg.jpg' %}');"
-  class="w-full bg-cover bg-no-repeat bg-center py-20 text-white">
+  {% comment %} <section  style="background-image: url('{% static 'images/laptop-bg.jpg' %}');" {% endcomment %}
+<section  class="w-full bg-cover bg-no-repeat bg-center py-20 text-black">
 
   <div class="max-w-6xl mx-auto px-4 text-center">
       <h1 class="text-4xl font-bold mb-4">About Us</h1>
-      <p class="text-lg max-w-2xl mx-auto text-white">
+      <p class="text-lg max-w-4xl mx-auto text-black">
           We are a professional photo retouching and post-production team committed
           to delivering premium quality editing with fast turnaround.
       </p>
@@ -47,7 +41,7 @@
 
 <!-- ABOUT CONTENT SECTION -->
 <section class="py-16 bg-gray-100">
-  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+  <div class=" max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
       <!-- LEFT IMAGE -->
       <div>
@@ -114,12 +108,12 @@
 
       <h2 class="text-3xl font-semibold text-[#0E3E4C] text-center mb-12">Meet Our Team</h2>
 
-      <div class="grid md:grid-cols-3 gap-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
 
         {% for staff in staff %}
           <div class="bg-white shadow rounded-lg p-6 text-center">
-              <img src="{{ staff.image.url }}" class="w-32 h-32 mx-auto rounded-full mb-4">
-              <h3 class="text-xl font-semibold">{{ staff.name }}</h3>
+              <img aria-label="{{ staff.name }}'s image" loading="lazy" src="{{ staff.image.url }}" class="w-32 h-32 mx-auto rounded-full mb-4">
+              <h3 class="text-xl font-semibold" itemscope itemtype="https://schema.org/Person" itemprop="name" aria-label="staff name is :{{ staff.name }}">{{ staff.name }}</h3>
               <p class="text-gray-600">{{ staff.department }}</p>
           </div>
         

@@ -6,7 +6,7 @@
 <!-- ================= Clipping Path Service Detail Page ================= -->
 
 <!-- Hero Section -->
-<section class="service-hero">
+<section hidden class="service-hero">
   {% if service.service_img  %}
       <img src="{{ service.service_img.url }}" alt="{{ service.img_alt_text }} | background image" class="hero-bg">
     {% endif %}
@@ -52,15 +52,13 @@
       </ul>
     </div>
     <div class="about-image">
-      
       {% for i in image %}
-        {% if i.service_category == service.servicecategory_name %}
+        {% if i.service_category == service.ServiceCategory %}
           <div class="card">
               <div class="img-compare" style="--pos:50%;">
-              <img class="base-img" src="{{ i.before_img.url }}" alt="">
               <img class="base-img" src="{{ i.before_img.url }}" alt="{{ i.before_img_alt_text }}">
               <div class="overlay-wrapper" aria-hidden="true">
-                  <img class="overlay-img" src="{{ i.after_img.url }}" alt="{{ i.after_img_alt_text }}">
+                  <img class="base-img" src="{{ i.after_img.url }}" alt="{{ i.after_img_alt_text }}">
               </div>
               <div class="divider" aria-hidden="true"></div>
               <button class="handle" aria-label="Slide to compare" title="Drag or use ← → keys">
@@ -83,7 +81,7 @@
 </section>
 
 <!-- Work Process Section -->
-<section class="section work-process" aria-labelledby="work-process-heading">
+<section hidden class="section work-process" aria-labelledby="work-process-heading">
   <h5 class="tag">Our Work Process</h5>
   <h2 id="work-process-heading">{{ service.working_process_h2 }}</h2>
   <p>Our workflow ensures accuracy, quality, and fast delivery for every image you send.</p>
@@ -124,9 +122,9 @@
   <h2>{{ service.pricing_h2 }}</h2>
   <p>Choose a plan that fits your business needs. All prices include 100% manual path creation and fast delivery.</p>
 
-  <div class="pricing-container">
+  <div class="pricing-container1">
 
-    <div class="pricing-card">
+    <div class="pricing-card1">
       <div class="card-header">
         <h3>BASIC PLAN</h3>
         <div class="price">${{ service.basic_plan }}<span>/image</span></div>
@@ -144,7 +142,7 @@
       </div>
     </div>
 
-    <div class="pricing-card">
+    <div class="pricing-card1">
       <div class="card-header">
         <h3>STANDARD PLAN</h3>
         <div class="price">${{ service.standard_plan }}<span>/image</span></div>
@@ -162,7 +160,7 @@
       </div>
     </div>
 
-    <div class="pricing-card">
+    <div class="pricing-card1">
       <div class="card-header">
         <h3>PREMIUM PLAN</h3>
         <div class="price">${{ service.premium_plan}}<span>/image</span></div>
@@ -184,10 +182,10 @@
 </section>
 
 <!-- CTA Section -->
-<section class="cta-section">
-  <h2>Ready to Enhance Your Product Photos?</h2>
-  <p>Get a free trial for your first 3 images and see the quality yourself.</p>
-  <a href="#" class="btn all-services">Start Free Trial <i class="fa-solid fa-arrow-right"></i></a>
+<section class="py-20 bg-[#0E3E4C] text-white text-center">
+  <h2 class="text-3xl font-semibold mb-4">Ready to Enhance Your Product Photos?</h2>
+  <p class="max-w-2xl mx-auto mb-6 text-white">Get a free trial for your first 3 images and see the quality yourself.</p>
+  <a href="{% url 'contactPage' %}"  class="bg-white text-[#0E3E4C] px-8 py-3 rounded-md font-semibold hover:bg-opacity-90 no-underline">Start Free Trial <i class="fa-solid fa-arrow-right"></i></a>
 </section>
 
 {% endblock %}

@@ -5,12 +5,12 @@
 {% block content %}
 
         {% comment %} <!----------------------------------------------------- hero new code ---------------------------------------> {% endcomment %}
-        <section class="hero">
+        <section class="hero" >
             <div class="overlay"></div>
             <div class="hero-content">
-              <h5>Editing Your</h5>
-              <h1><span>Image Editing</span> Best Services</h1>
-              <p class="text-white">From clipping paths to background removal, envisionStdio delivers high-quality edits to make your visuals shine.</p>
+              <h5>Editing Your Images</h5>
+              <h1><span>Best Image Editing</span>  Services</h1>
+              <p class="text-white">From clipping paths to background removal, envision Studio Bangladesh delivers high-quality edits to make your visuals shine.</p>
               <a href="#" class="hero-btn">Learn More</a>
             </div>
           </section>
@@ -46,7 +46,7 @@
 
           {% comment %} <!-- Our Introduction Section --> {% endcomment %}
     <section class="introduction">
-        <div class="intro-container">
+      <div class="intro-container">
         <div>
             <div class="section">
             <span class="tag">Our Introduction</span>
@@ -83,9 +83,8 @@
     
         <!-- Right Content -->
         <div >
-          {% for additionlimage in additionlimage %}
-            <img class="intro-img" src="{{ additionlimage.intro_overlay_image.url }}" alt="Professional photo editing example by Envision Studio"  loading="lazy" />
-          {% endfor %}
+            <img class="intro-img" src="https://envisionstudio.cloud/media/intro_image/banner.png" alt="Professional photo editing example by Envision Studio"  loading="lazy" />
+          
         </div>
 
           {% comment %} <div class="intro-images">
@@ -98,7 +97,7 @@
               </div>
           </div> {% endcomment %}
 
-        </div>
+      </div>
     </section>
 
     <!-- Services Section -->
@@ -108,10 +107,10 @@
             
             {% for s in service %}
                 <div class="service-box">
-                  <span>{{ s.ServiceCategory }}</span>
+                  <h2 class="text-lg">{{ s.ServiceCategory }}</h2>
                   {% if s.slug %}
                 
-                    <a href="{% url 'service_detail' s.slug %} " style='color:white;'><i class="fa-solid fa-arrow-right service_icon"></i></a>
+                    <a href="{% url 'service_detail' s.slug %} " style='color:white;'><i class="fa-solid fa-arrow-right service_icon hover:text-black"></i></a>
                   {% else %}
 
                     <i class="fa-solid fa-arrow-right service_icon"></i>
@@ -122,7 +121,7 @@
 
             </div>
             <div class="service-btn">
-            <a href="#" class="btn all-services">All Services <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="{% url 'servicePage' %}" class="btn all-services">All Services <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </section>
 
@@ -130,7 +129,7 @@
         {% comment %} <!------------------------------ our service section end ---------------> {% endcomment %}
     
         <!-- Work Process Section -->
-        <section class="section work-process" aria-labelledby="work-process-heading">
+        <section hidden class="section work-process" aria-labelledby="work-process-heading">
             <h5 class="tag" >Our Working Process</h5>
             <h2 id="work-process-heading">How Our Graphic Design Services Work</h2>
             <p>We follow a simple, transparent, and effective process to deliver professional clipping path, background removal, photo retouching, and image editing services that meet your business needs.</p>
@@ -181,12 +180,18 @@
                          <!-- Card 2 -->
                       {% for i in ba_img %}
                           <div class="card">
+
+
                               <div class="img-compare" style="--pos:50%;">
-                              <img class="sr-only" src="{{ i.before_img.url}}" alt="Rocks and sunset" />
-                              <img class="base-img" src="{{ i.before_img.url }}" alt="">
+
+                                <img class="base-img" src="{{ i.before_img.url }}" alt="{{ i.before_img_alt_text }}">
+
                               <div class="overlay-wrapper" aria-hidden="true">
-                                  <img class="overlay-img" src="{{ i.after_img.url }}" alt="">
+                                  <img class="base-img" src="{{ i.after_img.url }}" alt="{{ i.after_img_alt_text }}">
                               </div>
+
+
+
                               <div class="divider" aria-hidden="true"></div>
                               <button class="handle" aria-label="Slide to compare" title="Drag or use ← → keys">
                                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
