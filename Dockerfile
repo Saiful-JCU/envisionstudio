@@ -30,6 +30,7 @@ RUN apt-get update && apt-get install -y \
 # -------------------------
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install gunicorn
 
 # -------------------------
 # Install Node dependencies (Tailwind)
@@ -53,6 +54,7 @@ RUN npm run build:tailwind
 # -------------------------
 # CHANGE SETTINGS MODULE if needed
 RUN python manage.py collectstatic --noinput
+
 
 # -------------------------
 # Expose port
