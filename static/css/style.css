@@ -41,8 +41,6 @@ nav li {
 nav a {
     height: 100%;
     padding: 0 30px;
-    /* margin-top: 20px;
-    margin-bottom: 20px; */
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -115,17 +113,6 @@ justify-content: flex-start;
 
 /* ---------------------------------------------- hero new code -------------------------------------------------- */
 
-/* .hero {
-    position: relative;
-    min-height: 90vh;   
-    
-    display: flex;
-    align-items: center;
-    padding: 0 10%;
-    color: #fff;
-    z-index: 1;
-  } */
-
   .hero {
     background: url('https://envisionstudio.cloud/media/intro_image/behind-the-scenes-our-experts-working-office-graphic-design-team-creativity_C1Fo32F.webp')
     no-repeat center / cover;
@@ -141,35 +128,7 @@ justify-content: flex-start;
   }
   
 
-   /* .hero {
-    position: relative;
-    min-height: 100vh;
-
-    background: url('https://envisionstudio.cloud/media/intro_image/behind-the-scenes-our-experts-working-office-graphic-design-team-creativity_C1Fo32F.webp')
-                no-repeat center / cover;
-    overflow: hidden;
-  }
-  
-  .hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 60%;
-    height: 100%;
-    backdrop-filter: blur(1px); 
-    background: rgba(0, 0, 0, 0.15); 
-    z-index: 1;
-  }
-  
-  .hero > * {
-    position: relative;
-    z-index: 2;
-  }
- */
-
-
-  
+     
   .hero .overlay {
     position: absolute;
     inset: 0;

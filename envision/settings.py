@@ -13,20 +13,38 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 
+# below things for coolify
+from decouple import config
+import dj_database_url
+# coolify content end
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-+=)_&_mfq4n9*++gdwaky$xwgvo%^%q0ive&j%-ds52sz4cekx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True  
+# DEBUG = True  
 
-# ALLOWED_HOSTS = ['127.0.0.1:8000']
+ALLOWED_HOSTS = ['127.0.0.1']
+
+# coolify content start here
+# SECRET_KEY = os.environ.get("SECRET_KEY")
+
+if not SECRET_KEY:
+    raise Exception("SECRET_KEY is not set")
+
+DEBUG = os.environ.get("DEBUG", "False") == "True"
+
+# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
+
+# Optional but recommended
+# CSRF_TRUSTED_ORIGINS = [
+#     f"https://{host}" for host in ALLOWED_HOSTS if host
+# ]
+# coolify content end here
 
 
 # Application definition
@@ -52,6 +70,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'envision.urls'
@@ -74,15 +93,27 @@ TEMPLATES = [
 WSGI_APPLICATION = 'envision.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
+# Database for production
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("DB_NAME"),
+        "USER": os.environ.get("DB_USER"),
+        "PASSWORD": os.environ.get("DB_PASSWORD"),
+        "HOST": os.environ.get("DB_HOST"),
+        "PORT": os.environ.get("DB_PORT"),
     }
 }
+
+
+
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default='postgres://Saiful-Islam:ksyG4TQ4owinH23XpTIQBHY401VPLDqrFzXVOCXdFhcWZrbzwstT3c5oq7l7P8UD@31.220.61.49:5432/postgres',
+#         conn_max_age=600
+#     )
+# }
 
 
 # Password validation
