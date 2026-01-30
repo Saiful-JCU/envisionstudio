@@ -31,7 +31,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ALLOWED_HOSTS = ['127.0.0.1']
 
 # coolify content start here
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY",
+    "unsafe-secret-key-for-build-only"
+)
+
 
 if not SECRET_KEY:
     raise Exception("SECRET_KEY is not set")
